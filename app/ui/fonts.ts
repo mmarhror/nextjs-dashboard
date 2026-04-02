@@ -1,5 +1,8 @@
-import { Josefin_Sans } from "next/font/google";
+import { Josefin_Sans, Lusitana } from "next/font/google";
 
 export const josefin = Josefin_Sans();
 
-"https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap"
+export const lusitana = Lusitana({
+  subsets: ["latin"],
+  weight: ["400", "700"], // optional, choose the weights you want
+});
