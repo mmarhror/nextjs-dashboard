@@ -7,8 +7,10 @@ import { generatePagination } from "@/app/lib/utils";
 import { usePathname, useSearchParams } from "next/navigation";
 
 export default function Pagination({ totalPages }: { totalPages: number }) {
-  const pathname = usePathname();
+  // NOTE: Uncomment this code in Chapter 10
+
   const searchParams = useSearchParams();
+  const pathname = usePathname();
   const currentPage = Number(searchParams.get("page")) || 1;
 
   function createPageURL(pageNumber: number | string) {
@@ -21,6 +23,8 @@ export default function Pagination({ totalPages }: { totalPages: number }) {
 
   return (
     <>
+      {/*  NOTE: Uncomment this code in Chapter 10 */}
+
       <div className="inline-flex">
         <PaginationArrow
           direction="left"

@@ -1,18 +1,18 @@
 "use client";
 
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
-import { usePathname, useSearchParams, useRouter } from "next/navigation";
+
+import { useSearchParams, usePathname, useRouter } from "next/navigation";
 
 export default function Search({ placeholder }: { placeholder: string }) {
   const searchParams = useSearchParams();
+
   const pathname = usePathname();
   const { replace } = useRouter();
 
   let timeout: any = null;
   function handleSearch(value: string) {
-    //
     if (timeout) clearTimeout(timeout);
-
     timeout = setTimeout(() => {
       const params = new URLSearchParams(searchParams);
       params.set("page", "1");
@@ -26,7 +26,7 @@ export default function Search({ placeholder }: { placeholder: string }) {
     }, 300);
   }
 
-  return (  
+  return (
     <div className="relative flex flex-1 flex-shrink-0">
       <label htmlFor="search" className="sr-only">
         Search
