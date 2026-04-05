@@ -3,6 +3,7 @@
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 
 import { useSearchParams, usePathname, useRouter } from "next/navigation";
+import { useRef } from "react";
 
 export default function Search({ placeholder }: { placeholder: string }) {
   const searchParams = useSearchParams();
@@ -10,10 +11,13 @@ export default function Search({ placeholder }: { placeholder: string }) {
   const pathname = usePathname();
   const { replace } = useRouter();
 
-  let timeout: any = null;
+  let timeoutRef = useRef<NodeJS.Timeout | null>(null);
+
   function handleSearch(value: string) {
-    if (timeout) clearTimeout(timeout);
-    timeout = setTimeout(() => {
+    //
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+
+    timeoutRef.current = setTimeout(() => {
       const params = new URLSearchParams(searchParams);
       params.set("page", "1");
       if (value) {
